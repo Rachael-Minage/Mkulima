@@ -14,9 +14,9 @@ this.removeFarm = function (farmId){
     //     return item.farmId !== farmId
         
     // })
-let objectIndex = this.farm.findIndex(object => {
+let farmIndex = this.farm.findIndex(object => {
      object.farmId===farmId})
-     this.farm.splice(objectIndex,1)
+     this.farm.splice(farmIndex,1)
 
 
 
@@ -24,10 +24,46 @@ let objectIndex = this.farm.findIndex(object => {
 this.updateFarm = function(farmId,updatedFarmId,updatedFarmName,updatedFarmer,updatedPhone,updatedAddress){
     let farmObject = this.farm.find(object => object.farmId===farmId);
     farmObject.farmId = updatedFarmId;
-    farmObject.farmName
+    farmObject.name = updatedFarmName;
+    farmObject.farmer = updatedFarmer;
+    farmObject.phone = updatedPhone;
+    farmObject.address = updatedAddress;
+
 
 }
+this.getFarm = function (id){
+    console.log(this.farm.find(object=>object.farmId===id))
 
+}
+this.addProduct = function(productId,productName,price){
+    this.products.push({productId,productName,price})
+}
+this.removeProduct = function (productId){
+    let productIndex = this.products.findIndex(object => {
+        object.productId===productId});
+        this.farm.splice(Index,1);
+   
+
+}
+this.updateProduct = function(productId,updatedProductId,updatedProductName,updatedProductPrice){
+    let productObject = this.products.find(object => object.productId===productId);
+    productObject.productId = updatedProductId;
+    productObject.productName = updatedProductName;
+    productObject.price = updatedProductPrice;
+    
+
+}
+this.getProduct= function (productId){
+    console.log(this.products.find(object=>object.productId===productId))
+
+}
+this.printProducts = function(){
+    console.log(this.products)
+}
+this.calculateCost = function (productId,quantity){
+    let collectedProducts = this.products.find(object =>object.productId===productId)
+    console.log(`${quantity} ${collectedProducts.productName} for KSH ${quantity*collectedProducts.price}`)
+}
 }
 }
 
@@ -39,15 +75,6 @@ this.updateFarm = function(farmId,updatedFarmId,updatedFarmName,updatedFarmer,up
     
     
 // }
-
-let mkulimaOne = new Mkulima();
-mkulimaOne.addFarm("MK004","myFarm","Wanyonyi","078906638","50890")
-mkulimaOne.addFarm("MK005","myFarmOne","Wanyo","078906638","50890")
-mkulimaOne.addFarm("MK006","myFarmTwo","Wanyo","078906638","50890")
-console.log(mkulimaOne.farm)
-
-mkulimaOne.removeFarm("MK004")
-console.log(mkulimaOne.farm)
 
 
 
